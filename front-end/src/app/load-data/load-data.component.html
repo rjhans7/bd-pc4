@@ -12,7 +12,7 @@
 </div>
 <div style="text-align: center; margin-top: 30px">
     <span style="font-size: 14px;">Please, upload all the files in <code>.jpg, .png</code> and <code>.gif</code> format to be used in the building of the inverted index.</span>
-    <file-upload style="margin-top: 30px; margin-bottom: 10px;" accept="image/*" maxsize="20 MB"></file-upload>
+    <file-upload style="margin-top: 30px; margin-bottom: 10px;" accept="image/*" maxsize="20 MB" [control]="fileUploadControl" [fileslimit]="1"></file-upload>
     <button mat-raised-button color="primary" (click)="upload()">Upload</button>
     <button mat-raised-button color="accent" routerLink="/collect">Collect</button>
     <button mat-stroked-button color="accent" routerLink="/search">Search</button>

@@ -9,7 +9,7 @@ import { MessageService } from '../message.service';
 })
 export class LoadDataComponent {
   
-  public fileUploadControl = new FileUploadControl(FileUploadValidators.filesLimit(1), );
+  public fileUploadControl = new FileUploadControl(FileUploadValidators.filesLimit(1));
 
   constructor(private ds: DataService, private ms: MessageService) {}
 
