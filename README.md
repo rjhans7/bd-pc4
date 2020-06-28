@@ -1,5 +1,21 @@
 # PC 4: Database Multimedia
 
+## Table of Contents
+
+- [PC 4: Database Multimedia](#pc-4-database-multimedia)
+  - [Table of Contents](#table-of-contents)
+- [Requirements](#requirements)
+- [Group members](#group-members)
+- [Implementation](#implementation)
+  - [Characteristics Extraction](#characteristics-extraction)
+  - [Indexing and Searching](#indexing-and-searching)
+    - [Sequential KNN with Priority Queue (without index)](#sequential-knn-with-priority-queue-without-index)
+    - [Experiment 1](#experiment-1)
+    - [R-Tree Multidimensional index](#r-tree-multidimensional-index)
+    - [Experiment 1](#experiment-1-1)
+
+---
+
 This repo is for the PC4 of Data Base II course at UTEC
 
 The project has frontend and backend part.
@@ -20,8 +36,40 @@ The project has the following architecture:
 - [dlib](https://pypi.org/project/dlib/)
 
 # Group members
+
 - Roosevelt Ubaldo
 - Carlos Cupe
 - José García
 
 # Implementation
+
+## Characteristics Extraction
+
+
+## Indexing and Searching
+
+
+### Sequential KNN with Priority Queue (without index)
+
+
+### Experiment 1
+| Precision |  ED   |  MD   |
+| :-------: | :---: | :---: |
+|   K = 4   |       |       |
+|   K = 8   |       |       |
+|  K = 16   |       |       |
+
+### R-Tree Multidimensional index 
+
+
+### Experiment 1
+|  Tiempo   | KNN-RTree | KNN-Sequential |
+| :-------: | :-------: | :------------: |
+|  N = 100  |           |                |
+|  N = 200  |           |                |
+|  N = 400  |           |                |
+|  N = 800  |           |                |
+| N = 1600  |           |                |
+| N = 3200  |           |                |
+| N = 6400  |           |                |
+| N = 12800 |           |                |
