@@ -20,7 +20,7 @@ def manhattan_distance(x_1, x_2):
     return result
 
 
-def KNN_Secuential(image_path, k, distance_function):
+def KNN_Sequential(image_path, k, distance_function):
     binaries = os.listdir('binaries')
     
     unknown_image = face_recognition.load_image_file(image_path[1:])
