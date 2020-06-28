@@ -3,6 +3,7 @@ from routes.routes import Routes
 from routes.config import Config
 from database.database import create_db
 from flask import Flask
+from image import Image
 
 """
 Flask server creation and initialization using the config functions
