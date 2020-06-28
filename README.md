@@ -49,11 +49,27 @@ The project has the following architecture:
 
 ## Backend
 
-### Characteristics Extraction
+### Features Extraction
+
+First, of the 5749 classes, only 1683 were taken, which were the characters that had more than one photo.
+
+Next, 75% of the photos per participant were separated for the analysis and the remaining 25% for the tests.
+
+Finally, 128 features per image were extracted from the data for analysis using the face_recognition library. This information was saved together with the class to which it belongs in a binary file to reduce its size. In total 6187 images were analyzed.
+
+It should be noted that 23 images were discarded, since the face was not detected.
 
 ### Indexing and Searching
 
 #### Sequential KNN with Priority Queue (without index)
+
+The **KNN Sequential** function receives the path of the image to be analyzed, the k neighbors and the distance function.
+
+First, the features of the image to be evaluated are extracted.
+
+After iterating over the binaries with the features of the images to calculate the distance between the two images, these values ​​are stored in a priority queue.
+
+Lastly, the first k elements of the priority queue are returned.
 
 #### Experiment 1
 
