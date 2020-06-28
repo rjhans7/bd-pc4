@@ -101,10 +101,10 @@ def Routes (app):
         return jsonify({'images': list(map(lambda img: img.serialize(), Imagen.query.all()))})
 
     """
-    API: KNN Secuential
+    API: KNN Sequential
     """
-    @app.route('/secuential', methods=['POST'])
-    def KNN_Secuential():
+    @app.route('/sequential', methods=['POST'])
+    def KNN_Sequential():
 
         if 'file' not in request.files:
             flash('No file part')
@@ -116,7 +116,7 @@ def Routes (app):
 
         if 'function' not in request.form.keys():
             flash('Pending arguments')
-        distance_function = int(request.form['function'])
+        distance_function = request.form['function']
 
         if file.filename == '':
             flash('No selected file')
@@ -144,10 +144,10 @@ def Routes (app):
             knn = []
 
             if distance_function == 'euclidian':
-                knn = KNN_Secuential(path, k, euclidian_distance)
+                knn = KNN_Sequential(path, k, euclidian_distance)
             
             if distance_function == 'manhattan':
-                knn = KNN_Secuential(path, k, manhattan_distance)
+                knn = KNN_Sequential(path, k, manhattan_distance)
             
             for d, neighbour in knn:
                 neighbors.append('storage/' + neighbour)

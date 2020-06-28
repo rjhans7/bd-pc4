@@ -47,4 +47,20 @@ export class DataService {
     return this.http.post<any>(DataService.path + '/upload/all', formData)
   }
 
+    /** Funcion addFile
+   * Upload the images to the server
+   * @param file file to be uploaded
+   * @return Observer of the given API request
+  */
+  queryFile(file: any, k: number, distance_function: string): Observable<any>{
+  /** FormData */
+  const formData = new FormData();
+  /** Add the file to the form data */
+  formData.append('file', file[0]);
+  formData.append('k', String(k));
+  formData.append('function', distance_function);
+  /** Post request */
+  return this.http.post<any>(DataService.path + '/sequential', formData)
+}
+
 }

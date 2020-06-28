@@ -14,8 +14,8 @@ export class SearchEngineComponent {
     {
       name: "KNN Sequential (without index)",
       types: [
-        {name: "Manhattan Distance", value: "knn-md"},
-        {name: "Euclidean Distance", value: "knn-ed"}
+        {name: "Manhattan Distance", value: "euclidian"},
+        {name: "Euclidean Distance", value: "manhattan"}
       ]
     },
     {
@@ -28,8 +28,8 @@ export class SearchEngineComponent {
     }
 
   ]
-  selected = ''
-  n_neighbours = ''
+  distance_function: string = null
+  n_neighbours: number = null
   images = [1, 2, 3, 4, 6 ,7]
   public fileUploadControl = new FileUploadControl(FileUploadValidators.filesLimit(1));
 
@@ -53,7 +53,26 @@ export class SearchEngineComponent {
     }
   }
 
-
+  query(){
+    console.log(this.distance_function);
+    console.log(this.n_neighbours);
+    console.log(this.fileUploadControl);
+    if (this.fileUploadControl.size){
+      this.ds.queryFile(this.fileUploadControl.value, this.n_neighbours, this.distance_function).subscribe(
+        res => {
+          console.log(res);
+          this.ms.sendMessage("File succesfully uploaded!");
+          this.fileUploadControl.clear();
+        },
+        err => {
+          console.log (err);
+          this.ms.sendMessage("Error while uploading!");
+        }
+      )
+    }else{
+      this.ms.sendMessage("Please choose an image!")
+    }
+  }
 
 
 
