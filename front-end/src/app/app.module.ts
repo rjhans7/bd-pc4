@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SearchEngineComponent } from './search-engine/search-engine.component';
-import { LoadDataComponent } from './load-data/load-data.component';
 import { MaterialModule } from './material.module';
 import { HomeComponent } from './home/home.component';
 import { FileUploadModule } from '@iplab/ngx-file-upload';
@@ -17,7 +16,6 @@ import { HttpClientModule } from '@angular/common/http';
   declarations: [
     AppComponent,
     SearchEngineComponent,
-    LoadDataComponent,
     HomeComponent,
   ],
   imports: [
