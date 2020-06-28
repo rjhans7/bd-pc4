@@ -1,0 +1,57 @@
+.main-div {
+    background-image: url("../../assets/main-bg.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    filter: blur(1px);
+    -webkit-filter: blur(1px);
+    height: 100vh;
+}
+
+.main-content {
+    background-color: black;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.7;
+
+}
+
+.main-text {
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0, 0.4); /* Black w/opacity/see-through */
+    color: white;
+    position: absolute;
+    border-top: thin solid white;
+    border-bottom: thin solid white;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    
+    width: 80%;
+    padding: 20px;
+    text-align: center;
+}  
+  .mat-display-2 {
+    bottom: 0;
+    position: absolute;
+    margin-bottom: 250px;
+    margin-left: 30px;
+    color: white;
+  }
+  
+  .get-started {
+    bottom: 0;
+    position: absolute;
+    margin-bottom: 100px;
+    margin-left: 30px;
+    color: white;
+  }
+  
+  .fill-space {
+    flex: 1 1 auto;
+  }

@@ -1,0 +1,25 @@
+<mat-toolbar style="background-color: black; height: auto;">
+    <button mat-icon-button routerLink="/">
+        <mat-icon style="color: white;" >home</mat-icon>
+    </button>
+    <span class="fill-space"></span>
+    <span>
+        <small style="color: white; font-size: small;">CS2702 - Data Base II</small>       
+    </span>
+</mat-toolbar>
+<div id="heading" >
+    <h1>Collect Newest Tweets</h1>
+</div>
+<div style="text-align: center; margin-top: 30px">
+    <span style="font-size: 14px;">Or you can get the newest  tweets from <code>Twitter</code></span>
+    <br>
+    <br>
+    <mat-form-field style="margin-top: 20px;">
+        <mat-label>Number of tweets</mat-label>
+        <input type="number" matInput [(ngModel)]="n_tweets">
+    </mat-form-field>
+    <br>
+    <br>
+    <button mat-raised-button color="accent" (click)="generate()">Collect</button>   
+    <button mat-stroked-button color="accent" routerLink="/search">Search</button>
+</div>
