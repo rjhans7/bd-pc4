@@ -103,8 +103,8 @@ def Routes (app):
     """
     API: KNN Sequential
     """
-    @app.route('/sequential', methods=['POST'])
-    def KNN_Sequential():
+    @app.route('/secuential', methods=['POST'])
+    def KNN_Secuential_Route():
 
         if 'file' not in request.files:
             flash('No file part')
