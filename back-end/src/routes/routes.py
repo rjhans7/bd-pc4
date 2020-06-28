@@ -104,7 +104,7 @@ def Routes (app):
     API: KNN Secuential
     """
     @app.route('/secuential', methods=['POST'])
-    def KNN_Secuential():
+    def KNN_Secuential_Route():
 
         if 'file' not in request.files:
             flash('No file part')
@@ -116,7 +116,7 @@ def Routes (app):
 
         if 'function' not in request.form.keys():
             flash('Pending arguments')
-        distance_function = int(request.form['function'])
+        distance_function = request.form['function']
 
         if file.filename == '':
             flash('No selected file')
