@@ -2,24 +2,15 @@
 
 [Go back](../README.md)
 
-First of all create a virtual enviroment with the following code
+Dependencies:
+- [Python3](https://www.python.org/download/releases/3.0/)
+- [Flask](https://pypi.org/project/Flask/)
+- [RTree](https://anaconda.org/conda-forge/rtree)
+- [Face Recognition](https://face-recognition.readthedocs.io/en/latest/readme.html)
 
-```console
-python3 -m venv venv
+Install the dependencies, then just run:
+
+```python
+cd src/
+python main.py
 ```
-
-Activate the virtual enviroment with `source venv/bin/activate`
-
-Then, install all the pip dependencies with
-
-```console
-pip install -r requirements.txt
-```
-
-Finally run the server
-
-```console
-python3 server.py
-```
-
-That's all!
