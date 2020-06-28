@@ -11,8 +11,22 @@ import { FileUploadControl, FileUploadValidators } from '@iplab/ngx-file-upload'
 export class SearchEngineComponent {
   
   search_options = [
-    {name: "KNN Sequential (without index)", value: "knn"},
-    {name: "KNN Sequential R-Tree Indexed", value: "knn-rtree"}
+    {
+      name: "KNN Sequential (without index)",
+      types: [
+        {name: "Manhattan Distance", value: "knn-md"},
+        {name: "Euclidean Distance", value: "knn-ed"}
+      ]
+    },
+    {
+      name: "KNN Sequential",
+      types: [
+        {
+          name: "R-Tree indexed", value: "knn-rtree"
+        }
+      ]
+    }
+
   ]
   selected = ''
   n_neighbours = ''
