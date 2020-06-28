@@ -10,8 +10,13 @@ import { FileUploadControl, FileUploadValidators } from '@iplab/ngx-file-upload'
 })
 export class SearchEngineComponent {
   
-  text_query = ''
+  search_options = [
+    {name: "KNN Sequential (without index)", value: "knn"},
+    {name: "KNN Sequential R-Tree Indexed", value: "knn-rtree"}
+  ]
   selected = ''
+  n_neighbours = ''
+  images = [1, 2, 3, 4, 6 ,7]
   public fileUploadControl = new FileUploadControl(FileUploadValidators.filesLimit(1));
 
   constructor(private ds: DataService, private ms: MessageService) {}

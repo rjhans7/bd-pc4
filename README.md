@@ -80,8 +80,13 @@ The project has the following architecture:
 
 ## Frontend
 
+
+
 ## Galery
 
-![Set up](search-eng-1.png)
+**Home page**
+![Set up](home.png)
 
+**Search engine**
+![Set up](search-eng-1.png)
 ![Upload an image](search-eng-2.png)
