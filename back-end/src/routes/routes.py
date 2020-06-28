@@ -101,7 +101,7 @@ def Routes (app):
         return jsonify({'images': list(map(lambda img: img.serialize(), Imagen.query.all()))})
 
     """
-    API: KNN Secuential - Euclidian Distance
+    API: KNN Secuential
     """
     @app.route('/secuential', methods=['POST'])
     def KNN_Secuential():
