@@ -37,8 +37,20 @@
       padding: 2rem; } 
 }
 
+  
 .fill-space {
   flex: 1 1 auto;
+}
+
+.card-avatar {
+  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-size: cover;
+}
+
+.card-tweet {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 code {

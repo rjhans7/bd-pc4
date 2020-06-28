@@ -19,10 +19,9 @@
       <div style="text-align: center; margin-top: 25px;">
           <mat-form-field appearance="outline" style="width:50vw; max-width: 665px; min-width: 280px;">
               <mat-label>Select an option</mat-label>
-              <mat-select [(value)]="selected">
+              <mat-select [(ngModel)]="selected">
                 <mat-option>None</mat-option>
-                <mat-option value="option1">R-Tree Index</mat-option>
-                <mat-option value="option2">NN</mat-option>
+                <mat-option [value]="option.value" *ngFor="let option of search_options">{{option.name}}</mat-option>
               </mat-select>
             </mat-form-field>
       </div>
@@ -33,7 +32,7 @@
       <div style="text-align: center; margin-top: 25px;">
           <mat-form-field appearance="outline" style="width:50vw; max-width: 665px; min-width: 280px;">
               <mat-label>Type a number</mat-label>
-              <input matInput [(ngModel)]="text_query" type="number">
+              <input matInput [(ngModel)]="n_neighbours" type="number">
           </mat-form-field>
       </div>
 
@@ -43,7 +42,7 @@
   <mat-step >
       <ng-template matStepLabel>Upload an Image</ng-template>
       <div style="text-align: center; margin-top: 30px">
-          <span style="font-size: 14px;">Please, upload all the files in <code>.jpg, .png</code> or <code>.gif</code> format to be used in the building of the inverted index.</span>
+          <span style="font-size: 14px;">Please, upload the file to be tested in <code>.jpg, .png</code> or <code>.gif</code> format.</span>
           <file-upload style="margin-top: 30px; margin-bottom: 10px;" accept="image/*" maxsize="20 MB" [control]="fileUploadControl" [fileslimit]="1"></file-upload>
           <button mat-raised-button color="primary" (click)="upload()">Upload</button>
       </div>
@@ -55,9 +54,25 @@
 
   <mat-step>
     <ng-template matStepLabel>Results</ng-template>
+
     <div style="margin-top: 25px; text-align: center;">
-      <span style="font-size: 14px;">This is a result.</span>
-  </div>
+      <span style="font-size: 14px;">These are the {{n_neighbours}} nearest neighbours to the tested image.</span>
+    </div>
+
+    <div style="margin: 10px;">
+      <div fxLayout="row wrap" fxLayoutGap="10px grid">        
+        <div fxFlex class= "card-tweet" *ngFor="let image of images">
+          <mat-card  style="width: 200px;" >
+            <mat-card-header>
+              <mat-card-title>Username</mat-card-title>
+              <mat-card-subtitle>Date</mat-card-subtitle>
+            </mat-card-header>
+            <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+          </mat-card>
+          
+        </div>   
+      </div>
+    </div>
   <button mat-flat-button  style="float: left;" matStepperPrevious><mat-icon color="primary">navigate_before</mat-icon> Prev</button>
   </mat-step>
 </mat-horizontal-stepper>
