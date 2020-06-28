@@ -47,26 +47,4 @@ export class DataService {
     return this.http.post<any>(DataService.path + '/upload/all', formData)
   }
 
-  generateNewTweets(quantity: number): Observable<any>{
-    return this.http.get<any>(DataService.path + '/tweet/collect/' + quantity);
-  }
-
-  downloadNewTweetFile(file_path: string){
-    window.open (DataService.path + '/' + file_path);
-  }
-
-  getEmbededTweetById (id: number):Observable<any>{
-    return this.http.get<any>(DataService.path + '/tweet/oembed/' + id);
-  }
-
-  generateInvertedIndex (block_size: number, page_size: number):Observable<any>{
-    return this.http.get<any>(DataService.path + '/gen/inverted-index/' + block_size + '/' + page_size);
-  }
-
-  getNearestTweets (text: string):Observable<any>{
-    return this.http.post<any>(DataService.path + '/query', {'text': text, 'k': 10});
-  }
-
-
-
 }

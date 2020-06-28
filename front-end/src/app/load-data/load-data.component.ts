@@ -9,16 +9,17 @@ import { MessageService } from '../message.service';
 })
 export class LoadDataComponent {
   
-  constructor(private ds: DataService, private ms: MessageService) { }
-  public fileUploadControl = new FileUploadControl(FileUploadValidators.filesLimit(2));
+  public fileUploadControl = new FileUploadControl(FileUploadValidators.filesLimit(1), );
+
+  constructor(private ds: DataService, private ms: MessageService) {}
+
 
   upload(){
     if (this.fileUploadControl.size){
-      this.ds.addFiles(this.fileUploadControl.value).subscribe(
+      this.ds.addFile(this.fileUploadControl.value).subscribe(
         res => {
           this.ms.sendMessage("File succesfully uploaded!");
           this.fileUploadControl.clear();
-          this.ds.generateInvertedIndex(1000, 100);
         },
         err => {
           console.log (err);

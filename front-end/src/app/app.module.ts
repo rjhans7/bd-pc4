@@ -13,15 +13,12 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { DataService } from './data.service';
 import { HttpClientModule } from '@angular/common/http';
-import { GenerateDataComponent } from './generate-data/generate-data.component';
-import { NgxTweetModule } from "ngx-tweet";
 @NgModule({
   declarations: [
     AppComponent,
     SearchEngineComponent,
     LoadDataComponent,
     HomeComponent,
-    GenerateDataComponent
   ],
   imports: [
     BrowserModule,
@@ -32,8 +29,7 @@ import { NgxTweetModule } from "ngx-tweet";
     BrowserAnimationsModule,
     MaterialModule,
     HttpClientModule,
-    FlexLayoutModule,
-    NgxTweetModule
+    FlexLayoutModule
   ],
   providers: [DataService],
   bootstrap: [AppComponent],

@@ -3,7 +3,6 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { LoadDataComponent } from './load-data/load-data.component';
 import { SearchEngineComponent } from './search-engine/search-engine.component';
-import { GenerateDataComponent } from './generate-data/generate-data.component';
 
 
 const routes: Routes = [
@@ -14,10 +13,6 @@ const routes: Routes = [
   {
     path: 'load',
     component: LoadDataComponent
-  },
-  {
-    path: 'collect',
-    component: GenerateDataComponent
   },
   {
     path: 'search',
