@@ -11,6 +11,7 @@ import { FileUploadControl, FileUploadValidators } from '@iplab/ngx-file-upload'
 export class SearchEngineComponent {
   
   text_query = ''
+  selected = ''
   public fileUploadControl = new FileUploadControl(FileUploadValidators.filesLimit(1));
 
   constructor(private ds: DataService, private ms: MessageService) {}

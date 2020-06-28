@@ -4,15 +4,18 @@
 
 - [PC 4: Database Multimedia](#pc-4-database-multimedia)
   - [Table of Contents](#table-of-contents)
-- [Requirements](#requirements)
-- [Group members](#group-members)
+  - [Requirements](#requirements)
+  - [Group members](#group-members)
 - [Implementation](#implementation)
-  - [Characteristics Extraction](#characteristics-extraction)
-  - [Indexing and Searching](#indexing-and-searching)
-    - [Sequential KNN with Priority Queue (without index)](#sequential-knn-with-priority-queue-without-index)
-    - [Experiment 1](#experiment-1)
-    - [R-Tree Multidimensional index](#r-tree-multidimensional-index)
-    - [Experiment 1](#experiment-1-1)
+  - [Backend](#backend)
+    - [Characteristics Extraction](#characteristics-extraction)
+    - [Indexing and Searching](#indexing-and-searching)
+      - [Sequential KNN with Priority Queue (without index)](#sequential-knn-with-priority-queue-without-index)
+      - [Experiment 1](#experiment-1)
+      - [R-Tree Multidimensional index](#r-tree-multidimensional-index)
+      - [Experiment 2](#experiment-2)
+  - [Frontend](#frontend)
+  - [Galery](#galery)
 
 ---
 
@@ -28,14 +31,15 @@ The project has the following architecture:
 
 ![Architecture Diagram](PC4.png)
 
-# Requirements
+## Requirements
+
 - [NodeJS](https://nodejs.org/es/)
 - [Angular 9 or greater](https://angular.io/)
 - [Python3](https://www.python.org/download/releases/3.0/)
 - [OpenCV](https://opencv.org/)
 - [dlib](https://pypi.org/project/dlib/)
 
-# Group members
+## Group members
 
 - Roosevelt Ubaldo
 - Carlos Cupe
@@ -43,26 +47,26 @@ The project has the following architecture:
 
 # Implementation
 
-## Characteristics Extraction
+## Backend
 
+### Characteristics Extraction
 
-## Indexing and Searching
+### Indexing and Searching
 
+#### Sequential KNN with Priority Queue (without index)
 
-### Sequential KNN with Priority Queue (without index)
+#### Experiment 1
 
-
-### Experiment 1
 | Precision |  ED   |  MD   |
 | :-------: | :---: | :---: |
 |   K = 4   |       |       |
 |   K = 8   |       |       |
 |  K = 16   |       |       |
 
-### R-Tree Multidimensional index 
+#### R-Tree Multidimensional index
 
+#### Experiment 2
 
-### Experiment 1
 |  Tiempo   | KNN-RTree | KNN-Sequential |
 | :-------: | :-------: | :------------: |
 |  N = 100  |           |                |
@@ -73,3 +77,11 @@ The project has the following architecture:
 | N = 3200  |           |                |
 | N = 6400  |           |                |
 | N = 12800 |           |                |
+
+## Frontend
+
+## Galery
+
+![Set up](search-eng-1.png)
+
+![Upload an image](search-eng-2.png)
