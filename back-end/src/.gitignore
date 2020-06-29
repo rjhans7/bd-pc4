@@ -1,6 +1,3 @@
-kd_index.data
-kd_index.index
-
 .DS_Store
 .env
 .flaskenv
