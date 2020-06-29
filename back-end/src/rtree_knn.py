@@ -4,6 +4,7 @@ from rtree import index
 from os import listdir
 from os import remove
 from os.path import isfile, join
+import face_recognition
 
 class KNN_RTree:
     def __init__ (self, rebuild=True):
@@ -44,6 +45,15 @@ class KNN_RTree:
         model = read(pname)
         print('Example for ' + model.name)
         print(self.KNN(model.features, 2))
+    
+    def KNN_query (self, image_path, k):
+        unknown_image = face_recognition.load_image_file(image_path[1:])
+        try:
+            features = face_recognition.face_encodings(unknown_image)[0]
+        except IndexError:
+            print('No faces in image')
+            return
+        return self.KNN(features, k)
 
     def KNN (self, point, k):
         qpoint = list(point)

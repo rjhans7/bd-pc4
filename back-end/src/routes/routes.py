@@ -5,6 +5,7 @@ from werkzeug.utils import secure_filename
 from models.models import Imagen
 from database.database import db
 from knn import *
+from rtree_knn import KNN_RTree
 
 # Allowed upload file extensions
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'gif'}
@@ -149,8 +150,55 @@ def Routes (app):
             if distance_function == 'manhattan':
                 knn = KNN_Sequential(path, k, manhattan_distance)
             
-            for d, neighbour in knn:
-                neighbors.append('storage/' + neighbour)
+            for d, neighbour, name in knn:
+                neighbors.append({'path': 'storage/' + neighbour, 'name': name})
+            
+            #Return the path and status of the uploaded file
+            return Response(json.dumps({'path': file_path, 'filename': filename, 'id': new_img.id, 'neighbors': neighbors}), status = 200, mimetype = 'application/json')
+    
+    """
+    API: KNN RTree
+    """
+    @app.route('/rtree', methods=['POST'])
+    def KNN_Rtree_Route():
+
+        if 'file' not in request.files:
+            flash('No file part')
+        file = request.files['file']
+        
+        if 'k' not in request.form.keys():
+            flash('Pending arguments')
+        k = int(request.form['k'])
+
+        if file.filename == '':
+            flash('No selected file')
+        
+        #If the file exist and has an allowed extension
+        if file and allowed_file(file.filename):
+            filename = secure_filename(file.filename)       #Check if the file has a secure filename
+            path = '/images/' + filename
+
+            # Check if the file is already uploaded
+            existing_file_path = Imagen.query.filter(Imagen.path == path).first()
+            if existing_file_path:
+                return Response(json.dumps({'message': 'File already uploaded'}), status = 404, mimetype = 'application/json')            
+
+            # If not already upload, save the file in the server    
+            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            
+            # Save the filename and path in a database
+            file_path = url_for('uploaded_file', filename=filename)
+            new_img = Imagen(path = file_path, filename = filename)
+            db.session.add(new_img)
+            db.session.commit()
+            
+            neighbors = []
+
+            knn_rtree = KNN_RTree(False)
+            knn = knn_rtree.KNN_query(path, k)
+            
+            for item in knn:
+                neighbors.append({'path': 'storage/' + item['path'], 'name': item['name'] })
             
             #Return the path and status of the uploaded file
             return Response(json.dumps({'path': file_path, 'filename': filename, 'id': new_img.id, 'neighbors': neighbors}), status = 200, mimetype = 'application/json')
