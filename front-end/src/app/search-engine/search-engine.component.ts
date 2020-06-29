@@ -26,14 +26,20 @@ export class SearchEngineComponent {
         }
       ]
     }
+  ];
 
-  ]
-  distance_function: string = null
-  n_neighbours: number = null
-  images = [1, 2, 3, 4, 6 ,7]
+  /*Query*/
+  distance_function: string = null;
+  n_neighbours: number = null;
+  server_path: string = null;
+
+  /*Result*/
+  tested_image_path : string = null;
+  nearest_images_paths = [];
+
   public fileUploadControl = new FileUploadControl(FileUploadValidators.filesLimit(1));
 
-  constructor(private ds: DataService, private ms: MessageService) {}
+  constructor(private ds: DataService, private ms: MessageService) { }
 
 
   upload(){
@@ -54,26 +60,53 @@ export class SearchEngineComponent {
   }
 
   query(){
-    console.log(this.distance_function);
-    console.log(this.n_neighbours);
-    console.log(this.fileUploadControl);
     if (this.fileUploadControl.size){
-      this.ds.queryFile(this.fileUploadControl.value, this.n_neighbours, this.distance_function).subscribe(
-        res => {
-          console.log(res);
-          this.ms.sendMessage("File succesfully uploaded!");
-          this.fileUploadControl.clear();
-        },
-        err => {
-          console.log (err);
-          this.ms.sendMessage("Error while uploading!");
-        }
-      )
+      this.tested_image_path = null;
+      this.nearest_images_paths = [];
+      
+      /* KNN without index */
+      if (this.distance_function === "euclidian" || this.distance_function === "manhattan"){
+        console.log("Calling KNN without index ...");
+        this.ds.knnQueryFile(this.fileUploadControl.value, this.n_neighbours, this.distance_function).subscribe(
+          res => {
+            console.log(res);
+            this.tested_image_path = res['path'];
+            this.nearest_images_paths = res['neighbors'];
+            this.ms.sendMessage("File succesfully uploaded!");
+            this.fileUploadControl.clear();
+          },
+          err => {
+            console.log (err);
+            this.ms.sendMessage("Error while uploading!");
+          }
+        )
+      }else if (this.distance_function === "knn-rtree" ){
+        console.log("Calling KNN R-Tree ...");
+        this.ds.rtreeQueryFile(this.fileUploadControl.value, this.n_neighbours).subscribe(
+          res => {
+            console.log(res);
+            this.tested_image_path = res['path'];
+            this.nearest_images_paths = res['neighbors'];
+            this.ms.sendMessage("File succesfully uploaded!");
+            this.fileUploadControl.clear();
+          },
+          err => {
+            console.log (err);
+            this.ms.sendMessage("Error while uploading!");
+          }
+        )
+      }
+
     }else{
       this.ms.sendMessage("Please choose an image!")
     }
   }
 
-
+  fullPath(relativePath: string){
+    if (relativePath){
+      return this.ds.getServerPath(relativePath);
+    }
+    return null;
+  }
 
 }
