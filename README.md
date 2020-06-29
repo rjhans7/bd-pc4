@@ -8,7 +8,7 @@
   - [Group members](#group-members)
 - [Implementation](#implementation)
   - [Backend](#backend)
-    - [Characteristics Extraction](#characteristics-extraction)
+    - [Features Extraction](#features-extraction)
     - [Indexing and Searching](#indexing-and-searching)
       - [Sequential KNN with Priority Queue (without index)](#sequential-knn-with-priority-queue-without-index)
       - [Experiment 1](#experiment-1)
@@ -95,13 +95,30 @@ Lastly, the first k elements of the priority queue are returned.
 
 ## Frontend
 
+The frontend was developed in **Angular 9** with Material Design components using **Material Angular** in components and services in a single default module.
 
+The frontend has two principal pages, the home page and the search engine page. In the first one is a brief info of what the project is, while in the second one is the three steps to execute the query. In the first step we need to choose the type of search that we want to do. It could be a *KNN Search Without indexing* using *Manhattan* or *Euclidian Distance*, and *KNN Search Indexed* using an *R-Tree*. Then, in the second steep we need to upload the image to be tested. It could in `.jpg`, `.png` or `.gif` extension. Finally, in the third steep there is the results of our query and the tested image.
+
+To communicate properly the backend and frontend an specific service (DataService) was create. In this service all the API calls was implemented (upload an image, execute KNN and execute KNN-Tree). Another service (MessageService) was created to uniformize all the status messages within all the pages in the webpage. In this way we can show the status of the API calls to the user and keep it informated of what is happening.
+
+As we are using **Material Angular** the whole webpage is responsive and user-friendly.
 
 ## Galery
 
+Here is some scheenshots of the webpage usage.
+
 **Home page**
+
 ![Set up](home.png)
 
 **Search engine**
+
+As aforementioned we need to choose the type of searching algorithm and the number of *k* neighbours that we want to retrieve from the dataset.
 ![Set up](search-eng-1.png)
+
+Then, we need to upload the image to be tested.
 ![Upload an image](search-eng-2.png)
+
+**Results**
+Finally, we are going to have the results of the query.
+![Result](search-eng-3.jpeg)
