@@ -35,7 +35,7 @@ def KNN_Sequential(image_path, k, distance_function):
     for binary in binaries:
         image = read('binaries/' + binary)
         d = distance_function(image.features, features)
-        neighbors.append((d, image.path))
+        neighbors.append((d, image.path, image.name))
     
     neighbors.sort(key = lambda x: x[0])
     
