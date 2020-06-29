@@ -75,9 +75,9 @@ Lastly, the first k elements of the priority queue are returned.
 
 | Precision |  ED   |  MD   |
 | :-------: | :---: | :---: |
-|   K = 4   |       |       |
-|   K = 8   |       |       |
-|  K = 16   |       |       |
+|   K = 4   |  1.0  |  1.0  |
+|   K = 8   |  1.0  |  1.0  |
+|  K = 18   |  0.88 |  1.0  |
 
 #### R-Tree Multidimensional index
 
@@ -85,14 +85,13 @@ Lastly, the first k elements of the priority queue are returned.
 
 |  Tiempo   | KNN-RTree | KNN-Sequential |
 | :-------: | :-------: | :------------: |
-|  N = 100  |           |                |
-|  N = 200  |           |                |
-|  N = 400  |           |                |
-|  N = 800  |           |                |
-| N = 1600  |           |                |
-| N = 3200  |           |                |
-| N = 6400  |           |                |
-| N = 12800 |           |                |
+|  N = 100  |   0.167   |      0.194     |
+|  N = 200  |   0.170   |      0.198     |
+|  N = 400  |   0.181   |      0.215     |
+|  N = 800  |   0.191   |      0.259     |
+| N = 1600  |   0.189   |      0.334     |
+| N = 3200  |   0.236   |      0.492     |
+| N = 6187  |   0.319   |      0.855     |
 
 ## Frontend
 

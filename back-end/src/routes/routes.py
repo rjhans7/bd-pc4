@@ -7,6 +7,8 @@ from database.database import db
 from knn import *
 from rtree_knn import KNN_RTree
 
+import time
+
 # Allowed upload file extensions
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'gif'}
 
@@ -144,12 +146,16 @@ def Routes (app):
             neighbors = []
             knn = []
 
+            start_time = time.time()
+            
             if distance_function == 'euclidian':
                 knn = KNN_Sequential(path, k, euclidian_distance)
             
             if distance_function == 'manhattan':
                 knn = KNN_Sequential(path, k, manhattan_distance)
             
+            print("Search Time: %s" % (time.time() - start_time))
+
             for d, neighbour, name in knn:
                 neighbors.append({'path': 'storage/' + neighbour, 'name': name})
             
@@ -195,7 +201,9 @@ def Routes (app):
             neighbors = []
 
             knn_rtree = KNN_RTree(False)
+            start_time = time.time()
             knn = knn_rtree.KNN_query(path, k)
+            print("Search Time: %s" % (time.time() - start_time))
             
             for item in knn:
                 neighbors.append({'path': 'storage/' + item['path'], 'name': item['name'] })
