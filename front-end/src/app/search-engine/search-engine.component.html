@@ -56,20 +56,28 @@
 
   <mat-step>
     <ng-template matStepLabel>Results</ng-template>
+    <div style="margin-top: 25px; text-align: center;">
+      <h2>Test Image</h2>
+    </div>
 
+    <div fxFlex class= "card-tweet">
+      <mat-card  style="width: 200px;" >
+        <img mat-card-image [src]="fullPath(tested_image_path)" alt="Tested image">
+      </mat-card>
+     </div>
+    
+    <div style="margin-top: 25px; text-align: center;">
+      <h2>Nearest Images </h2>
+    </div>
     <div style="margin-top: 25px; text-align: center;">
       <span style="font-size: 14px;">These are the {{n_neighbours}} nearest neighbours to the tested image.</span>
     </div>
 
     <div style="margin: 10px;">
       <div fxLayout="row wrap" fxLayoutGap="10px grid">        
-        <div fxFlex class= "card-tweet" *ngFor="let image of images">
+        <div fxFlex class= "card-tweet" *ngFor="let near_image of nearest_images_paths">
           <mat-card  style="width: 200px;" >
-            <mat-card-header>
-              <mat-card-title>Username</mat-card-title>
-              <mat-card-subtitle>Date</mat-card-subtitle>
-            </mat-card-header>
-            <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+            <img mat-card-image [src]="fullPath(near_image)" alt="Near image">
           </mat-card>
           
         </div>   

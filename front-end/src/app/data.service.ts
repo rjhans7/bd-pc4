@@ -17,6 +17,10 @@ export class DataService {
  */
   constructor(private http: HttpClient) { }
 
+  getServerPath(relative_path: string): string{
+    return DataService.path + '/' + relative_path;
+  }
+
   /** Funcion addFile
    * Upload the images to the server
    * @param file file to be uploaded
@@ -60,7 +64,7 @@ export class DataService {
   formData.append('k', String(k));
   formData.append('function', distance_function);
   /** Post request */
-  return this.http.post<any>(DataService.path + '/sequential', formData)
+  return this.http.post<any>(DataService.path + '/sequential', formData);
 }
 
 }
