@@ -51,12 +51,14 @@ export class DataService {
     return this.http.post<any>(DataService.path + '/upload/all', formData)
   }
 
-    /** Funcion addFile
+  /** Funcion knnQueryFile
    * Upload the images to the server
    * @param file file to be uploaded
+   * @param k number of neighbours
+   * @param distance_function Euclidean Distance or Manhattan Distance
    * @return Observer of the given API request
   */
-  queryFile(file: any, k: number, distance_function: string): Observable<any>{
+  knnQueryFile(file: any, k: number, distance_function: string): Observable<any>{
   /** FormData */
   const formData = new FormData();
   /** Add the file to the form data */
@@ -65,6 +67,22 @@ export class DataService {
   formData.append('function', distance_function);
   /** Post request */
   return this.http.post<any>(DataService.path + '/sequential', formData);
+}
+
+  /** Funcion rtreeQueryFile
+   * Upload the images to the server
+   * @param file file to be uploaded
+   * @param k number of neighbours
+   * @return Observer of the given API request
+  */
+ rtreeQueryFile(file: any, k: number): Observable<any>{
+  /** FormData */
+  const formData = new FormData();
+  /** Add the file to the form data */
+  formData.append('file', file[0]);
+  formData.append('k', String(k));
+  /** Post request */
+  return this.http.post<any>(DataService.path + '/rtree', formData);
 }
 
 }

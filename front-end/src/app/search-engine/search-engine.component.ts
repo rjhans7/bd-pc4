@@ -61,12 +61,32 @@ export class SearchEngineComponent {
 
   query(){
     if (this.fileUploadControl.size){
+      this.tested_image_path = null;
+      this.nearest_images_paths = [];
+      
+      /* KNN without index */
       if (this.distance_function === "euclidian" || this.distance_function === "manhattan"){
-        this.ds.queryFile(this.fileUploadControl.value, this.n_neighbours, this.distance_function).subscribe(
+        console.log("Calling KNN without index ...");
+        this.ds.knnQueryFile(this.fileUploadControl.value, this.n_neighbours, this.distance_function).subscribe(
           res => {
             console.log(res);
             this.tested_image_path = res['path'];
-            this.nearest_images_paths = res['neighbors']
+            this.nearest_images_paths = res['neighbors'];
+            this.ms.sendMessage("File succesfully uploaded!");
+            this.fileUploadControl.clear();
+          },
+          err => {
+            console.log (err);
+            this.ms.sendMessage("Error while uploading!");
+          }
+        )
+      }else if (this.distance_function === "knn-rtree" ){
+        console.log("Calling KNN R-Tree ...");
+        this.ds.rtreeQueryFile(this.fileUploadControl.value, this.n_neighbours).subscribe(
+          res => {
+            console.log(res);
+            this.tested_image_path = res['path'];
+            this.nearest_images_paths = res['neighbors'];
             this.ms.sendMessage("File succesfully uploaded!");
             this.fileUploadControl.clear();
           },
